@@ -1,0 +1,14 @@
+<svg width="120" height="215" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <style>.cls-1{fill:#fff;}.cls-2{fill:none;}.cls-3{fill:#63b134;}.cls-4{fill:#e3b535;}.cls-5{fill:#c31b2d;}.cls-6{fill:#4c9c37;}.cls-7{fill:#3e7e45;}.cls-8{fill:#fac00f;}.cls-9{fill:#e6412d;}.cls-10{fill:#f49a2d;}.cls-11{fill:#1594d2;}.cls-12{fill:#a01a42;}.cls-13{fill:#2eb9de;}.cls-14{fill:#eb682f;}.cls-15{fill:#e3233b;}.cls-16{fill:#dc1567;}.cls-17{fill:#18496a;}.cls-18{fill:#c6972c;}.cls-19{fill:#02689c;}</style>
+ </defs>
+ <title>Echo.ODS 1</title>
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="217" width="122" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <path id="svg_2" d="m118.055,180.68435c-9.48,17.34 -34,30.43 -53.64,30.43c-34,0 -62.47,-27.81 -62.47,-61.84s28.46,-62.18 62.47,-62.18c19.63,0 44.16,13.74 53.64,31.08l-15.37,8.18c-7.2,-12.43 -24.2,-21.92 -38.27,-21.92a44.83,44.83 0 1 0 0,89.66c14.07,0 31.07,-10.15 38.27,-22.58l15.37,9.17z" class="cls-1"/>
+ </g>
+</svg>

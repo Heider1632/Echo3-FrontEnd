@@ -1,0 +1,14 @@
+<svg width="110" height="213" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <style>.cls-1{fill:#fff;}.cls-2{fill:none;}.cls-3{fill:#63b134;}.cls-4{fill:#e3b535;}.cls-5{fill:#c31b2d;}.cls-6{fill:#4c9c37;}.cls-7{fill:#3e7e45;}.cls-8{fill:#fac00f;}.cls-9{fill:#e6412d;}.cls-10{fill:#f49a2d;}.cls-11{fill:#1594d2;}.cls-12{fill:#a01a42;}.cls-13{fill:#2eb9de;}.cls-14{fill:#eb682f;}.cls-15{fill:#e3233b;}.cls-16{fill:#dc1567;}.cls-17{fill:#18496a;}.cls-18{fill:#c6972c;}.cls-19{fill:#02689c;}</style>
+ </defs>
+ <title>Echo.ODS 1</title>
+ <g>
+  <title>background</title>
+  <rect x="-1" y="-1" width="112" height="215" id="canvas_background" fill="none"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <path class="cls-1" d="m108,210.709993l-16.67,0l0,-70.33a36.45,36.45 0 0 0 -36.33,-36.32c-19.95,0 -35.65,16.36 -35.65,36.32l0,70.33l-17.35,0l0,-208.42l17.33,0l0,99.15c7.89,-7.85 23.92,-14.73 35.67,-14.73c28.78,0 53,23.88 53,53.66l0,70.34z" id="svg_3"/>
+ </g>
+</svg>

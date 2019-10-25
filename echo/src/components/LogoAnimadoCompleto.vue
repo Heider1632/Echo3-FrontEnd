@@ -1,0 +1,369 @@
+<template>
+  <svg viewBox="0 0 520 215" xmlns="http://www.w3.org/2000/svg">
+    <title>Echo Logo</title>
+    <g>
+      <title>Echo</title>
+      <path
+        id="e"
+        d="m129.495099,145.674347c0,2.29 -0.33,4.25 -0.33,11.78l-105.64,0c4.26,19.96 23.89,36.64 44.48,36.64c14.39,0 31.73,-10.15 38.92,-22.58l14.39,9.16c-9.48,17.35 -33.68,30.42 -53.31,30.42c-34,0 -62.46,-27.81 -62.46,-61.84s28.45,-62.16 62.46,-62.16c30.09,0 61.16,23.88 61.16,54a30.75,30.75 0 0 0 0.33,4.58zm-18,-4.58c-4.25,-20 -23.22,-36.65 -43.5,-36.65c-20.58,0 -40.21,16.65 -44.47,36.65l87.97,0z"
+        class="texto"
+      ></path>
+      <path
+        id="c"
+        d="m258.355099,180.684347c-9.48,17.34 -34,30.43 -53.64,30.43c-34,0 -62.47,-27.81 -62.47,-61.84s28.46,-62.18 62.47,-62.18c19.63,0 44.16,13.74 53.64,31.08l-15.37,8.18c-7.2,-12.43 -24.2,-21.92 -38.27,-21.92a44.83,44.83 0 1 0 0,89.66c14.07,0 31.07,-10.15 38.27,-22.58l15.37,9.17z"
+        class="texto"
+      ></path>
+      <path
+        id="h"
+        d="m376.415099,211.094347l-16.67,0l0,-70.33a36.45,36.45 0 0 0 -36.33,-36.32c-19.95,0 -35.65,16.36 -35.65,36.32l0,70.33l-17.35,0l0,-208.42l17.33,0l0,99.15c7.89,-7.85 23.92,-14.73 35.67,-14.73c28.78,0 53,23.88 53,53.66l0,70.34z"
+        class="texto"
+      ></path>
+      <g stroke="null" id="ods">
+        <path
+          ref="ods1"
+          id="ods1"
+          data-name="Ods 1"
+          :class="clases[0]"
+          stroke="null"
+          d="m453.554479,114.245139a34.082515,34.082515 0 0 1 8.628485,1.682555l9.707045,-25.486387a60.766104,60.766104 0 0 0 -18.33553,-3.505322l0,27.309154z"
+        ></path>
+        <path
+          ref="ods2"
+          id="ods2"
+          data-name="Ods 2"
+          :class="clases[1]"
+          stroke="null"
+          d="m465.806928,117.362179a34.36294,34.36294 0 0 1 7.614638,4.831951l18.216888,-20.125941a61.769165,61.769165 0 0 0 -16.178409,-10.192398l-9.653117,25.486387z"
+        ></path>
+        <path
+          ref="ods3"
+          id="ods3"
+          data-name="Ods 3"
+          :class="clases[2]"
+          stroke="null"
+          d="m481.650983,132.073746l24.1274,-12.187735a62.696727,62.696727 0 0 0 -11.270958,-15.099848l-18.216888,20.125941a35.592499,35.592499 0 0 1 5.392803,7.21557"
+        ></path>
+        <path
+          ref="ods4"
+          id="ods4"
+          data-name="Ods 4"
+          :class="clases[3]"
+          stroke="null"
+          d="m507.514866,123.42369l-24.138186,12.176949a35.258146,35.258146 0 0 1 2.415976,8.628485l26.856159,-2.566974a62.729084,62.729084 0 0 0 -5.133948,-18.249245"
+        ></path>
+        <path
+          ref="ods5"
+          id="ods5"
+          data-name="Ods 5"
+          :class="clases[4]"
+          stroke="null"
+          d="m486.170151,149.438571a35.010077,35.010077 0 0 1 -0.798135,7.549924l25.885454,7.549924a63.430148,63.430148 0 0 0 1.811982,-15.099848c0,-1.283487 0,-2.566974 -0.118642,-3.839676l-26.856159,2.566974c0,0.420639 0,0.852063 0,1.272701"
+        ></path>
+        <path
+          ref="ods6"
+          id="ods6"
+          data-name="Ods 6"
+          :class="clases[5]"
+          stroke="null"
+          d="m484.336598,160.741886a35.592499,35.592499 0 0 1 -3.764176,7.851921l21.571212,16.448049a62.427087,62.427087 0 0 0 8.153918,-16.760832l-25.960953,-7.539139z"
+        ></path>
+        <path
+          ref="ods7"
+          id="ods7"
+          data-name="Ods 7"
+          :class="clases[6]"
+          stroke="null"
+          d="m478.264302,171.786347a35.495429,35.495429 0 0 1 -6.546863,6.23408l14.183072,23.242981a62.793798,62.793798 0 0 0 13.881075,-13.050583l-21.517284,-16.426478z"
+        ></path>
+        <path
+          ref="ods8"
+          id="ods8"
+          data-name="Ods 8"
+          :class="clases[7]"
+          stroke="null"
+          d="m482.600116,203.366601l-14.161501,-23.210624a34.70808,34.70808 0 0 1 -8.261774,3.365109l4.961379,26.87773a60.830817,60.830817 0 0 0 17.429539,-7.032215"
+        ></path>
+        <path
+          ref="ods9"
+          id="ods9"
+          data-name="Ods 9"
+          :class="clases[8]"
+          stroke="null"
+          d="m456.358737,184.340792a35.117933,35.117933 0 0 1 -5.026092,0.366711a33.55402,33.55402 0 0 1 -4.055388,-0.248069l-4.993736,26.856159a62.556514,62.556514 0 0 0 9.049123,0.668708a61.477954,61.477954 0 0 0 10.019828,-0.819706l-4.993736,-26.823802z"
+        ></path>
+        <path
+          ref="ods10"
+          id="ods10"
+          data-name="Ods 10"
+          :class="clases[9]"
+          stroke="null"
+          d="m443.437581,183.790726a34.513939,34.513939 0 0 1 -8.552985,-3.235682l-14.183072,23.189053a61.273027,61.273027 0 0 0 17.742322,6.870431l4.993736,-26.823802z"
+        ></path>
+        <path
+          ref="ods11"
+          id="ods11"
+          data-name="Ods 11"
+          :class="clases[10]"
+          stroke="null"
+          d="m424.832411,172.304056l-21.474141,16.512763a62.793798,62.793798 0 0 0 14.021288,12.856442l14.183072,-23.22141a35.042434,35.042434 0 0 1 -6.730218,-6.147795"
+        ></path>
+        <path
+          ref="ods12"
+          id="ods12"
+          data-name="Ods 12"
+          :class="clases[11]"
+          stroke="null"
+          d="m422.470363,169.165444a35.085576,35.085576 0 0 1 -4.109316,-8.337273l-25.885454,7.549924a62.556514,62.556514 0 0 0 8.520629,17.300112l21.474141,-16.512763z"
+        ></path>
+        <path
+          ref="ods13"
+          id="ods13"
+          data-name="Ods 13"
+          :class="clases[12]"
+          stroke="null"
+          d="m416.495137,149.438571q0,-0.819706 0,-1.650198l-26.856159,-2.426761c-0.075499,1.348201 -0.129427,2.707187 -0.129427,4.076959a63.516433,63.516433 0 0 0 1.822767,15.099848l25.885454,-7.549924a35.916068,35.916068 0 0 1 -0.80892,-7.549924"
+        ></path>
+        <path
+          ref="ods14"
+          id="ods14"
+          data-name="Ods 14"
+          :class="clases[13]"
+          stroke="null"
+          d="m416.926562,143.873198a35.07479,35.07479 0 0 1 2.566974,-8.757912l-24.1274,-12.176949a62.761441,62.761441 0 0 0 -5.317304,18.518885l26.87773,2.415976z"
+        ></path>
+        <path
+          ref="ods15"
+          id="ods15"
+          data-name="Ods 15"
+          :class="clases[14]"
+          stroke="null"
+          d="m421.283946,131.609965a35.592499,35.592499 0 0 1 5.543801,-7.21557l-18.16296,-20.158297a62.83694,62.83694 0 0 0 -11.475885,15.186133l24.095044,12.187735z"
+        ></path>
+        <path
+          ref="ods16"
+          id="ods16"
+          data-name="Ods 16"
+          :class="clases[15]"
+          stroke="null"
+          d="m429.739861,121.773492a35.064005,35.064005 0 0 1 7.474425,-4.573097l-9.707045,-25.45403a61.607381,61.607381 0 0 0 -15.897983,9.858044l18.130604,20.169083z"
+        ></path>
+        <path
+          ref="ods17"
+          id="ods17"
+          data-name="Ods 17"
+          :class="clases[16]"
+          stroke="null"
+          d="m440.859821,115.798266a34.395297,34.395297 0 0 1 8.801054,-1.585484l0,-27.298369a60.787675,60.787675 0 0 0 -18.551242,3.419037l9.750188,25.464816z"
+        ></path>
+      </g>
+    </g>
+  </svg>
+</template>
+
+<script>
+export default {
+  name: 'logo-animado',
+  data: () => ({
+    ods: [
+      {
+        nombre: 'ods1',
+        color: '#e3233b'
+      },
+      {
+        nombre: 'ods2',
+        color: '#e3b535'
+      },
+      {
+        nombre: 'ods3',
+        color: '#4c9c37'
+      },
+      {
+        nombre: 'ods4',
+        color: '#c31b2d'
+      },
+      {
+        nombre: 'ods5',
+        color: '#e6412d'
+      },
+      {
+        nombre: 'ods6',
+        color: '#2eb9de'
+      },
+      {
+        nombre: 'ods7',
+        color: '#fac00f'
+      },
+      {
+        nombre: 'ods8',
+        color: '#a01a42'
+      },
+      {
+        nombre: 'ods9',
+        color: '#eb682f'
+      },
+      {
+        nombre: 'ods10',
+        color: '#dc1567'
+      },
+      {
+        nombre: 'ods11',
+        color: '#f49a2d'
+      },
+      {
+        nombre: 'ods12',
+        color: '#c6972c'
+      },
+      {
+        nombre: 'ods13',
+        color: '#3e7e45'
+      },
+      {
+        nombre: 'ods14',
+        color: '#1594d2'
+      },
+      {
+        nombre: 'ods15',
+        color: '#63b134'
+      },
+      {
+        nombre: 'ods16',
+        color: '#02689c'
+      },
+      {
+        nombre: 'ods17',
+        color: '#18496a'
+      }
+    ],
+    colores: {
+      fondo: '#000000',
+      contrasteFondo: '#ffffff',
+      segundoFondo: '#1c1c1b',
+      resaltado: '#31312f',
+      degradado: [
+        '#1c1c1b',
+        '#252322',
+        '#2a2a29',
+        '#31312f',
+        '#363635',
+        '#3d3c3c'
+      ]
+    }
+  }),
+  props: ['porcentaje'],
+  computed: {
+    clases: function () {
+      let nuevasClases = [
+        'sinFondo',
+        'sinFondo',
+        'sinFondo',
+        'sinFondo',
+        'sinFondo',
+        'sinFondo',
+        'sinFondo',
+        'sinFondo',
+        'sinFondo',
+        'sinFondo',
+        'sinFondo',
+        'sinFondo',
+        'sinFondo',
+        'sinFondo',
+        'sinFondo',
+        'sinFondo',
+        'sinFondo'
+      ]
+      if (this.porcentaje) {
+        const totalDeOds = 17
+        let cantMostrar = Math.round((this.porcentaje * totalDeOds) / 100)
+        if (cantMostrar > totalDeOds) {
+          cantMostrar = totalDeOds
+        }
+        for (let j = 0; j < cantMostrar; j++) {
+          nuevasClases[j] = this.ods[j].nombre
+        }
+      }
+      return nuevasClases
+    }
+  }
+}
+</script>
+
+<style>
+.texto {
+  fill: #000;
+}
+.ods1 {
+  fill: #e3233b;
+  stroke: rgba(0, 0, 0, 0);
+}
+.ods2 {
+  fill: #e3b535;
+  stroke: rgba(0, 0, 0, 0);
+}
+.ods3 {
+  fill: #4c9c37;
+  stroke: rgba(0, 0, 0, 0);
+}
+.ods4 {
+  fill: #c31b2d;
+  stroke: rgba(0, 0, 0, 0);
+}
+.ods5 {
+  fill: #e6412d;
+  stroke: rgba(0, 0, 0, 0);
+}
+.ods6 {
+  fill: #2eb9de;
+  stroke: rgba(0, 0, 0, 0);
+}
+.ods7 {
+  fill: #fac00f;
+  stroke: rgba(0, 0, 0, 0);
+}
+.ods8 {
+  fill: #a01a42;
+  stroke: rgba(0, 0, 0, 0);
+}
+.ods9 {
+  fill: #eb682f;
+  stroke: rgba(0, 0, 0, 0);
+}
+.ods10 {
+  fill: #dc1567;
+  stroke: rgba(0, 0, 0, 0);
+}
+.ods11 {
+  fill: #f49a2d;
+  stroke: rgba(0, 0, 0, 0);
+}
+.ods12 {
+  fill: #c6972c;
+  stroke: rgba(0, 0, 0, 0);
+}
+.ods13 {
+  fill: #3e7e45;
+  stroke: rgba(0, 0, 0, 0);
+}
+.ods14 {
+  fill: #1594d2;
+  stroke: rgba(0, 0, 0, 0);
+}
+.ods15 {
+  fill: #63b134;
+  stroke: rgba(0, 0, 0, 0);
+}
+.ods16 {
+  fill: #02689c;
+  stroke: rgba(0, 0, 0, 0);
+}
+.ods17 {
+  fill: #18496a;
+  stroke: rgba(0, 0, 0, 0);
+}
+.sinFondo {
+  fill: rgba(0, 0, 0, 0);
+  stroke: white;
+}
+.fondoNegro {
+  fill: #000;
+}
+</style>
