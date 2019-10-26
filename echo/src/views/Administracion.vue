@@ -119,13 +119,12 @@
           <h2 class="my-3">{{$t('administracion.preguntas')}}</h2>
         </v-flex>
         <v-flex xs12 class="mb-3" name="Listado Preguntas">
-
-        <v-data-table
-          :headers="encabezado"
-          :items="getPreguntas"
-          class="elevation-1"
-          no-data-text="No hay preguntas, aún."
-        >
+          <v-data-table
+            :headers="encabezado"
+            :items="getPreguntas"
+            class="elevation-1"
+            no-data-text="No hay preguntas, aún."
+          >
           <template slot="items" slot-scope="props">
             <td class="text-xs-center">{{ props.item.text }}</td>
             <td class="text-xs-center">
@@ -145,6 +144,46 @@
             </td>
           </template>
         </v-data-table>
+        <v-dialog v-model="dialogEditarPregunta">
+          <v-container v-if="preguntaEditar" style="background-color: white;" fluid>
+            <v-layout column align-center>
+              <v-flex xs12 class="mb-2">
+                <h1>Editar Pregunta</h1>
+              </v-flex>
+              <v-flex xs12 class="mb-2">
+                <v-text-field
+                v-model="preguntaEditar.text"
+                solo
+                :label="$t('crearEntrevista.pregunta')"
+                readonly/>
+              </v-flex>
+              <v-flex xs12 class="mb-2">
+                <v-text-field v-model="preguntaEditar.topic" solo readonly :label="$t('crearEntrevista.tipoDePregunta')"/>
+              </v-flex>
+              <v-flex xs12 class="mb-2">
+                <v-checkbox v-model="preguntaEditar.required" :label="$t('crearEntrevista.requerido')" color="primary"/>
+              </v-flex>
+              <v-flex xs12 class="mb-2">
+                <v-combobox
+                v-if="preguntaEditar.scope === 'choice'"
+                v-model="preguntaEditar.options"
+                :label="$t('crearEntrevista.respuestas')"
+                solo
+                multiple
+                chips
+                deletable-chips
+                append-icon
+                :search-input.sync="previo"
+                @keyup.tab="updateTags"
+                @paste="updateTags"/>
+              </v-flex>
+              <v-flex xs12 class="mb-2">
+                <v-btn @click="dialogEditarPregunta = false">Cerrar</v-btn>
+                <v-btn @click="actualizarPregunta" color="primary">Actualizar Pregunta</v-btn>
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-dialog>
       </v-flex>
       </v-layout>
     </v-container>
@@ -182,7 +221,10 @@ export default {
         { text: this.$i18n.t('crearEntrevista.requerido'), value: this.$i18n.t('crearEntrevista.requerido'), align: 'center' },
         { text: this.$i18n.t('crearEntrevista.respuestas'), value: this.$i18n.t('crearEntrevista.respuestas'), align: 'center' },
         { text: this.$i18n.t('crearEntrevista.acciones'), value: this.$i18n.t('crearEntrevista.acciones'), align: 'center', sortable: false }
-      ]
+      ],
+      preguntaEditar: null,
+      dialogEditarPregunta: false,
+      previo: ''
     }
   },
   mounted () {
@@ -288,6 +330,21 @@ export default {
           this.setAlerta()
           this.setTextoAlerta(error)
         })
+    },
+    editarPregunta (pregunta) {
+      this.preguntaEditar = pregunta
+      this.dialogEditarPregunta = true
+    },
+    actualizarPregunta () {
+
+    },
+    updateTags () {
+      this.$nextTick(() => {
+        this.preguntaEditar.options.push(this.previo)
+        this.$nextTick(() => {
+          this.previo = ''
+        })
+      })
     }
   },
   computed: {

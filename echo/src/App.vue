@@ -37,7 +37,7 @@
             <router-view/>
           </v-layout>
         </v-container>
-        <v-footer style="z-index: 1; min-height:auto!important;" height="auto">
+        <v-footer style="z-index: 1; min-height:auto!important; padding: 20px 0;" height="auto">
           <v-layout column fill-height>
             <v-flex xs12 name="idiomas" hidden-sm-and-up>
               <v-layout column class="text-xs-center">

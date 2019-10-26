@@ -13,9 +13,6 @@ export default {
     getUsuario: (state) => {
       return state.usuario
     },
-    getId: (state) => {
-      return state.usuario.id
-    },
     getUsuarios: (state) => {
       return state.usuarios
     }

@@ -80,7 +80,7 @@ export default new Vuex.Store({
     },
     salir ({ commit }) {
       commit('setToken', null)
-      commit('setUsuario', null)
+      commit('setUsuario', { role: 'invitado' })
       localStorage.removeItem('token')
       router.go({ path: '/acceso' })
     }
