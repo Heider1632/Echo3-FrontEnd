@@ -151,6 +151,7 @@ export default {
     asignarRol: 'Asignar Rol',
     actualizarRol: 'Actualizar Rol',
     mismoRol: 'El usuario ya tiene el rol elegido, por favor selecciona otro',
-    rolActualizado: 'Rol de Usuario Actualizado con éxito'
+    rolActualizado: 'Rol de Usuario Actualizado con éxito',
+    preguntas: 'Base de Preguntas'
   }
 }

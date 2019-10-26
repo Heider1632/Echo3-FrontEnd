@@ -77,13 +77,12 @@ export default new Vuex.Store({
         commit('setUsuario', decode(token))
         router.push('/')
       }
-      
     },
-    salir({ commit }) {
-      commit("setToken", null);
-      commit("setUsuario", null);
-      localStorage.removeItem("token");
-      router.go({ path: '/acceso'});
+    salir ({ commit }) {
+      commit('setToken', null)
+      commit('setUsuario', null)
+      localStorage.removeItem('token')
+      router.go({ path: '/acceso' })
     }
   }
 })

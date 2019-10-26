@@ -13,8 +13,8 @@ import 'aos/dist/aos.css'
 import Animacion from './components/Animacion.vue'
 import axios from 'axios'
 
-//axios.defaults.baseURL = 'https://tbe.echo.carinalab.co/graphql'
-axios.defaults.baseURL = 'http://localhost:3015/graphql'
+axios.defaults.baseURL = 'https://tbe.echo.carinalab.co/graphql'
+// axios.defaults.baseURL = 'http://localhost:3015/graphql'
 // axios.defaults.headers.common['Authorization'] = 'Bearer ' + store.state.token
 // axios.defaults.headers.common['Token'] = store.state.token
 

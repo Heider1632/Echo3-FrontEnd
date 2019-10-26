@@ -37,7 +37,7 @@
                     </v-flex>
                     <v-flex xs12 md6 class="px-3">
                       <h2 class="mb-3">{{$t('evento.resultados')}}</h2>
-                      <v-btn class="mx-2" round color="secondary" v-for="i in entrevistas" :key="i.titulo" :disabled="i.disabled" @click="verResultadoEntrevista(i.idEntrevista)">{{i.titulo}}</v-btn>
+                      <v-btn class="mx-2" round color="secondary" v-for="i in evento.Interview" :key="i.titulo" :disabled="i.disabled" @click="verResultadoEntrevista(i._id)">{{i.name}}</v-btn>
                     </v-flex>
                   </v-layout>
                   <v-layout row wrap justify-center v-if="getRol === 'administrador'">
@@ -69,8 +69,7 @@ export default {
   name: 'Evento',
   data () {
     return {
-      evento: [],
-      entrevistas: []
+      evento: []
     }
   },
   mounted () {
@@ -80,22 +79,28 @@ export default {
         this.evento = eventos[i]
       }
     }
-    var entrevistas = this.getEntrevistas
-    const idUsuario = this.getId
-    const rol = this.getRol
-    for (let i = 0; i < entrevistas.length; i++) {
-      if (entrevistas[i].idEvento === this.$route.params.idEvento) {
-        this.entrevistas.push(entrevistas[i])
-        if (rol === 'encuestador') {
-          this.entrevistas[i]['disabled'] = true
-          for (let index = 0; index < entrevistas[i].idEncuestadores.length; index++) {
-            if (entrevistas[i].idEncuestadores[index] === idUsuario) {
-              this.entrevistas[i]['disabled'] = false
-            }
-          }
-        }
-      }
-    }
+    // var eventos = this.getEventos
+    // for (let i = 0; i < eventos.length; i++) {
+    //   if (eventos[i]._id === this.$route.params.idEvento) {
+    //     this.evento = eventos[i]
+    //   }
+    // }
+    // var entrevistas = this.getEventos.Interview
+    // const idUsuario = this.getId
+    // const rol = this.getRol
+    // for (let i = 0; i < entrevistas.length; i++) {
+    //   if (entrevistas[i].idEvento === this.$route.params.idEvento) {
+    //     this.entrevistas.push(entrevistas[i])
+    //     if (rol === 'encuestador') {
+    //       this.entrevistas[i]['disabled'] = true
+    //       for (let index = 0; index < entrevistas[i].idEncuestadores.length; index++) {
+    //         if (entrevistas[i].idEncuestadores[index] === idUsuario) {
+    //           this.entrevistas[i]['disabled'] = false
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
   },
   methods: {
     anadirEntrevista () {
@@ -115,7 +120,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getEventos', 'getEntrevistas', 'getRol', 'getId'])
+    ...mapGetters(['getEventos', 'getRol', 'getId'])
   }
 }
 </script>

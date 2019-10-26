@@ -10,7 +10,7 @@
         <v-flex xs12 class="mb-4" name="dataEventos">
           <v-data-table
             :headers="encabezadoEventos"
-            :items="eventos"
+            :items="getEventos"
             class="elevation-1"
             no-data-text="No hay eventos, aún.">
               <template slot="items" slot-scope="props">
@@ -21,13 +21,31 @@
                     <v-btn icon class="mx-0" @click="irEvento(props.item._id)">
                       <v-icon color="primary">far fa-eye</v-icon>
                     </v-btn>
-                    <v-btn icon class="mx-0" @click="eliminarEvento(props.item._id)">
+                    <v-btn icon class="mx-0" @click="preEliminarEvento(props.item)">
                       <v-icon color="grey">fas fa-trash-alt</v-icon>
                     </v-btn>
                   </td>
               </template>
             </v-data-table>
         </v-flex>
+        <v-dialog v-model="dialogEliminarEvento">
+          <v-card>
+            <v-card-title>
+              <v-layout column>
+                <v-flex>
+                  <h1 align="center">Eliminar Evento</h1>
+                </v-flex>
+              </v-layout>
+            </v-card-title>
+            <v-card-text>
+              <p align="center">Esta acción es permanente y borrará TODA la información relacionada con el evento <b>{{eventoEliminar.title}}</b></p>
+            </v-card-text>
+            <v-card-actions>
+              <v-btn @click="dialogEliminarEvento = false" block>Cerrar</v-btn>
+              <v-btn color="red" class="white--text" block @click="eliminarEvento()">Eliminar el Evento</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
         <v-flex xs12 name="usuarios" text-xs-center class="mt-3">
           <v-divider />
           <h2 class="my-3">{{$t('administracion.usuarios')}}</h2>
@@ -35,7 +53,7 @@
         <v-flex xs12 name="dataUsuarios">
           <v-data-table
             :headers="encabezadoUsuarios"
-            :items="usuarios"
+            :items="getUsuarios"
             class="elevation-1"
             no-data-text="No hay usuarios, aún.">
               <template slot="items" slot-scope="props">
@@ -52,7 +70,7 @@
               </template>
             </v-data-table>
         </v-flex>
-        <v-dialog v-if="editarUsuarioDialog" v-model="editarUsuarioDialog">
+        <v-dialog name="DialogEditarUsuario" v-if="editarUsuarioDialog" v-model="editarUsuarioDialog">
             <v-container style="background-color: white;" fluid>
               <v-layout column align-center>
                 <v-flex xs12 class="mb-2">
@@ -96,6 +114,38 @@
               </v-layout>
             </v-container>
         </v-dialog>
+        <v-flex xs12 name="Preguntas" text-xs-center class="mt-3">
+          <v-divider />
+          <h2 class="my-3">{{$t('administracion.preguntas')}}</h2>
+        </v-flex>
+        <v-flex xs12 class="mb-3" name="Listado Preguntas">
+
+        <v-data-table
+          :headers="encabezado"
+          :items="getPreguntas"
+          class="elevation-1"
+          no-data-text="No hay preguntas, aún."
+        >
+          <template slot="items" slot-scope="props">
+            <td class="text-xs-center">{{ props.item.text }}</td>
+            <td class="text-xs-center">
+              <v-icon v-if="props.item.required">fas fa-check</v-icon>
+              <v-icon v-else>fas fa-times</v-icon>
+            </td>
+            <td class="text-xs-center">
+              <span v-for="i in props.item.options" :key="i"><v-chip>{{i}}</v-chip></span>
+            </td>
+            <td class="justify-center layout px-0">
+              <v-btn icon class="mx-0" @click="editarPregunta(props.item)">
+                <v-icon color="grey">far fa-edit</v-icon>
+              </v-btn>
+              <v-btn icon class="mx-0" @click="eliminarPregunta(props.item)">
+                <v-icon color="grey">fas fa-trash-alt</v-icon>
+              </v-btn>
+            </td>
+          </template>
+        </v-data-table>
+      </v-flex>
       </v-layout>
     </v-container>
 </template>
@@ -125,33 +175,24 @@ export default {
         { text: this.$i18n.t('administracion.rol'), value: this.$i18n.t('administracion.rol'), align: 'center' },
         { text: this.$i18n.t('administracion.acciones'), value: this.$i18n.t('administracion.acciones'), align: 'center', sortable: false }
       ],
-      usuarios: []
+      dialogEliminarEvento: false,
+      eventoEliminar: '',
+      encabezado: [
+        { text: this.$i18n.t('crearEntrevista.pregunta'), value: this.$i18n.t('crearEntrevista.pregunta'), align: 'center' },
+        { text: this.$i18n.t('crearEntrevista.requerido'), value: this.$i18n.t('crearEntrevista.requerido'), align: 'center' },
+        { text: this.$i18n.t('crearEntrevista.respuestas'), value: this.$i18n.t('crearEntrevista.respuestas'), align: 'center' },
+        { text: this.$i18n.t('crearEntrevista.acciones'), value: this.$i18n.t('crearEntrevista.acciones'), align: 'center', sortable: false }
+      ]
     }
   },
   mounted () {
-    axios.post('/', {
-      query: `query {
-          users{
-            _id
-            name
-            email
-            phone
-            country
-            department
-            city
-            role
-          }
-        }`
-    }).then(respuesta => {
-      this.usuarios = respuesta.data.data.users
-    }).catch(error => {
-      this.$store.commit('setAlerta')
-      this.$store.commit('setTextoAlerta', error)
-    })
+    this.actualizarUsuarios()
+    this.actualizarPreguntas()
+    this.actualizarEventos()
   },
   methods: {
     ...mapMutations(['setAlerta', 'setTextoAlerta']),
-    ...mapActions(['actualizarEventos']),
+    ...mapActions(['actualizarEventos', 'actualizarPreguntas', 'actualizarUsuarios']),
     irEvento (evento) {
       const menu = `${this.$i18n.t('alias.evento')}/${evento}`
       this.$router.push(menu)
@@ -200,11 +241,15 @@ export default {
         })
       }
     },
-    eliminarEvento (id) {
+    preEliminarEvento (evento) {
+      this.eventoEliminar = evento
+      this.dialogEliminarEvento = true
+    },
+    eliminarEvento () {
       axios.post('/', {
         query: `mutation {
           deleteEvent(
-            _id:"${id}"
+            _id:"${this.eventoEliminar._id}"
             ){
               status
               message
@@ -224,43 +269,29 @@ export default {
         this.$store.commit('setAlerta')
         this.$store.commit('setTextoAlerta', error)
       })
+    },
+    eliminarPregunta (pregunta) {
+      axios.post('/', {
+        query: `mutation {
+                deleteQuestion(_id: "${pregunta._id}") {
+                status
+                message
+                }
+            }`
+      })
+        .then(respuesta => {
+          this.setAlerta()
+          this.setTextoAlerta(respuesta.data.data.deleteQuestion.message)
+          this.actualizarPreguntas()
+        })
+        .catch(error => {
+          this.setAlerta()
+          this.setTextoAlerta(error)
+        })
     }
   },
   computed: {
-    ...mapGetters(['getEventos', 'getEntrevistas']),
-    eventos () {
-      var eventos = []
-      if (this.getEventos) {
-        eventos = JSON.parse(JSON.stringify(this.getEventos))
-        var entrevistas = JSON.parse(JSON.stringify(this.getEntrevistas))
-        if (this.getEntrevistas) {
-          var listadoEntrevistas = []
-          for (let o = 0; o < entrevistas.length; o++) {
-            listadoEntrevistas.push({
-              idEntrevista: entrevistas[o].idEntrevista,
-              idEvento: entrevistas[o].idEvento,
-              titulo: entrevistas[o].titulo,
-              idEncuestadores: entrevistas[0].idEncuestadores
-            })
-          }
-          eventos.forEach(evento => {
-            listadoEntrevistas.forEach(entrevista => {
-              if (entrevista.idEvento === evento.id) {
-                if (evento.entrevistas === undefined) {
-                  evento['entrevistas'] = []
-                  evento.entrevistas.push(entrevista)
-                } else {
-                  if (evento.entrevistas.find(e => e.idEntrevista === entrevista.idEntrevista) === undefined) {
-                    evento.entrevistas.push(entrevista)
-                  }
-                }
-              }
-            })
-          })
-        }
-      }
-      return eventos
-    }
+    ...mapGetters(['getEventos', 'getPreguntas', 'getUsuarios'])
   }
 }
 </script>
