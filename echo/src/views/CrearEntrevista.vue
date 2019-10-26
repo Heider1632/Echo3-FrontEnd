@@ -23,7 +23,7 @@
         solo
         v-model="preguntasSeleccionadas"
         multiple
-        :items="preguntas"
+        :items="getPreguntas"
         item-text="text"
         return-object
         :label="$t('crearEntrevista.seleccionaPregunta')"/>
@@ -98,16 +98,18 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapGetters, mapMutations, mapActions } from 'vuex'
 import axios from 'axios'
 export default {
   name: 'crearEntrevista',
+  mounted () {
+    this.actualizarPreguntas()
+  },
   data () {
     return {
       titulo: null,
       meta: null,
       publico: null,
-      preguntas: [],
       encabezado: [
         { text: this.$i18n.t('crearEntrevista.pregunta'), value: this.$i18n.t('crearEntrevista.pregunta'), align: 'center' },
         { text: this.$i18n.t('crearEntrevista.requerido'), value: this.$i18n.t('crearEntrevista.requerido'), align: 'center' },
@@ -128,13 +130,16 @@ export default {
       ]
     }
   },
-  watch:{
-    preguntasSeleccionadas(val){
-      if(val.length !== 0){
+  computed: {
+    ...mapGetters(['getPreguntas'])
+  },
+  watch: {
+    preguntasSeleccionadas (val) {
+      if (val.length !== 0) {
         this.preguntasSeleccionadas.map(pregunta => {
-          let found = this.idPreguntas.find(item => item == pregunta._id)
-          if(!found){
-             this.idPreguntas.push(pregunta._id)
+          let found = this.idPreguntas.find(item => item === pregunta._id)
+          if (!found) {
+            this.idPreguntas.push(pregunta._id)
           }
         })
       }
@@ -142,16 +147,15 @@ export default {
   },
   methods: {
     ...mapMutations(['setEntrevista', 'setAlerta', 'setTextoAlerta']),
+    ...mapActions(['actualizarPreguntas', 'actualizarEventos']),
     crearEntrevista () {
       var entrevista = {
         name: this.titulo,
         Event: this.$route.params.idEvento,
         Question: this.idPreguntas,
-        goalInterview: parseInt(this.meta),
-        //kind: this.publico
+        goalInterview: parseInt(this.meta)
+        // kind: this.publico
       }
-
-      console.log(entrevista)
       axios.post('/', {
         query: `mutation {
           createInterview(
@@ -167,9 +171,11 @@ export default {
         }`
       })
         .then(respuesta => {
-          console.log(respuesta)
           this.setAlerta()
           this.setTextoAlerta('Entrevista Publicado Correctamente con el ID: ' + respuesta.data.data.createInterview._id)
+          this.actualizarEventos()
+          const menu = `${this.$i18n.t('alias.entrevista')}/${respuesta.data.data.createInterview._id}`
+          this.$router.push(menu)
         })
         .catch(error => {
           this.setAlerta()
@@ -197,14 +203,16 @@ export default {
         var pregunta = null
         if (!this.seleccion) {
           pregunta = {
+            _id: '',
             text: this.texto,
             topic: this.tipoPregunta,
             scope: 'open',
-            options: [],
+            options: undefined,
             required: this.requerido
           }
         } else {
           pregunta = {
+            _id: '',
             text: this.texto,
             topic: this.tipoPregunta,
             scope: 'choice',
@@ -227,10 +235,13 @@ export default {
           }`
         })
           .then(respuesta => {
+            console.log(respuesta)
             this.setAlerta()
             this.setTextoAlerta('Pregunta Añadida Correctamente')
-            this.preguntasSeleccionadas.push(respuesta.data.data.createQuestion)
+            pregunta._id = respuesta.data.data.createQuestion._id
+            this.preguntasSeleccionadas.push(pregunta)
             this.idPreguntas.push(respuesta.data.data.createQuestion._id)
+            this.actualizarPreguntas()
             this.texto = null
             this.tipoDePregunta = null
             this.respuestas = []
@@ -252,26 +263,6 @@ export default {
         })
       })
     }
-  },
-  mounted () {
-    axios.post('/', {
-      query: `{
-          questions{
-            _id
-            topic
-            text
-            scope
-            options
-          }
-        }`
-    })
-      .then(respuesta => {
-        this.preguntas = respuesta.data.data.questions
-      })
-      .catch(error => {
-        this.setAlerta()
-        this.setTextoAlerta(error)
-      })
   }
 }
 </script>

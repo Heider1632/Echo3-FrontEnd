@@ -27,7 +27,7 @@
           </v-card-text>
           <v-card-actions>
               <v-flex xs12 class="text-xs-center">
-                <v-btn class="mx-3 mb-3" round color="secondary" v-for="e in i.entrevistas" :key="e.titulo" @click="verEntrevista(e.idEntrevista)">{{e.titulo}}</v-btn>
+                <v-btn class="mx-3 mb-3" round color="secondary" v-for="e in i.Interview" :key="e._id" @click="verEntrevista(e._id)">{{e.name}}</v-btn>
               </v-flex>
           </v-card-actions>
           </v-card>
@@ -46,45 +46,45 @@ export default {
       this.$router.push(menu)
     },
     irEvento (index) {
-      const menu = `${this.$i18n.t('alias.evento')}/${this.eventos[index]._id}`
+      const menu = `${this.$i18n.t('alias.evento')}/${this.getEventos[index]._id}`
       this.$router.push(menu)
     }
   },
   computed: {
-    ...mapGetters(['getEventos', 'getEntrevistas']),
-    eventos () {
-      var eventos = []
-      if (this.getEventos) {
-        eventos = JSON.parse(JSON.stringify(this.getEventos))
-        var entrevistas = JSON.parse(JSON.stringify(this.getEntrevistas))
-        if (this.getEntrevistas) {
-          var listadoEntrevistas = []
-          for (let o = 0; o < entrevistas.length; o++) {
-            listadoEntrevistas.push({
-              idEntrevista: entrevistas[o].idEntrevista,
-              idEvento: entrevistas[o].idEvento,
-              titulo: entrevistas[o].titulo,
-              idEncuestadores: entrevistas[0].idEncuestadores
-            })
-          }
-          eventos.forEach(evento => {
-            listadoEntrevistas.forEach(entrevista => {
-              if (entrevista.idEvento === evento.id) {
-                if (evento.entrevistas === undefined) {
-                  evento['entrevistas'] = []
-                  evento.entrevistas.push(entrevista)
-                } else {
-                  if (evento.entrevistas.find(e => e.idEntrevista === entrevista.idEntrevista) === undefined) {
-                    evento.entrevistas.push(entrevista)
-                  }
-                }
-              }
-            })
-          })
-        }
-      }
-      return eventos
-    }
+    ...mapGetters(['getEventos'])
+    // eventos () {
+    //   var eventos = []
+    //   if (this.getEventos) {
+    //     eventos = JSON.parse(JSON.stringify(this.getEventos))
+    //     var entrevistas = JSON.parse(JSON.stringify(this.getEntrevistas))
+    //     if (this.getEntrevistas) {
+    //       var listadoEntrevistas = []
+    //       for (let o = 0; o < entrevistas.length; o++) {
+    //         listadoEntrevistas.push({
+    //           idEntrevista: entrevistas[o].idEntrevista,
+    //           idEvento: entrevistas[o].idEvento,
+    //           titulo: entrevistas[o].titulo,
+    //           idEncuestadores: entrevistas[0].idEncuestadores
+    //         })
+    //       }
+    //       eventos.forEach(evento => {
+    //         listadoEntrevistas.forEach(entrevista => {
+    //           if (entrevista.idEvento === evento.id) {
+    //             if (evento.entrevistas === undefined) {
+    //               evento['entrevistas'] = []
+    //               evento.entrevistas.push(entrevista)
+    //             } else {
+    //               if (evento.entrevistas.find(e => e.idEntrevista === entrevista.idEntrevista) === undefined) {
+    //                 evento.entrevistas.push(entrevista)
+    //               }
+    //             }
+    //           }
+    //         })
+    //       })
+    //     }
+    //   }
+    //   return eventos
+    // }
   }
 }
 </script>

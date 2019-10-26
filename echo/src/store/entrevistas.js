@@ -2,25 +2,22 @@ import axios from 'axios'
 export default {
   state: {
     eventos: [],
-    entrevistas: []
+    preguntas: []
   },
   getters: {
-    getEntrevistas: (state) => {
-      return state.entrevistas
-    },
     getEventos: (state) => {
       return state.eventos
+    },
+    getPreguntas: (state) => {
+      return state.preguntas
     }
   },
   mutations: {
-    setEntrevista: (state, entrevista) => {
-      state.entrevistas.push(entrevista)
-    },
     setEventos: (state, eventos) => {
       state.eventos = eventos
     },
-    pushEvento: (state, evento) => {
-      state.eventos.push(evento)
+    setPreguntas: (state, preguntas) => {
+      state.preguntas = preguntas
     }
   },
   actions: {
@@ -40,23 +37,6 @@ export default {
               _id
               name
               goalInterview
-            }
-          }
-        }`
-      }).then(respuesta => {
-        commit('setEventos', respuesta.data.data.events)
-      }).catch(error => {
-        commit('setAlerta')
-        commit('setTextoAlerta', error)
-      })
-    },
-    actualizarEntrevistas({ commit }) {
-      axios.post('/', {
-        query: `query {
-          {
-            interviews{
-              _id
-              name
               Question{
                 _id
                 text
@@ -69,11 +49,31 @@ export default {
           }
         }`
       }).then(respuesta => {
-        commit('setEntrevistas', respuesta.data.data.interviews)
+        commit('setEventos', respuesta.data.data.events)
       }).catch(error => {
         commit('setAlerta')
         commit('setTextoAlerta', error)
       })
+    },
+    actualizarPreguntas ({ commit }) {
+      axios.post('/', {
+        query: `{
+            questions{
+              _id
+              topic
+              text
+              scope
+              options
+            }
+          }`
+      })
+        .then(respuesta => {
+          commit('setPreguntas', respuesta.data.data.questions)
+        })
+        .catch(error => {
+          commit('setAlerta')
+          commit('setTextoAlerta', error)
+        })
     }
   }
 }

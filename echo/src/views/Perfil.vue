@@ -12,27 +12,27 @@
             </v-flex>
             <v-flex xs12 md6 class="pa-3">
                 <h3>{{$t('perfil.nombre')}}</h3>
-                <v-text-field solo v-model="usuario.name"></v-text-field>
+                <v-text-field solo v-model="usuario.user.name"></v-text-field>
             </v-flex>
             <v-flex xs12 md6 class="pa-3">
                 <h3>{{$t('perfil.email')}}</h3>
-                <v-text-field solo v-model="usuario.email"></v-text-field>
+                <v-text-field solo v-model="usuario.user.email"></v-text-field>
             </v-flex>
             <v-flex xs12 md6 class="pa-3">
                 <h3>{{$t('perfil.celular')}}</h3>
-                <v-text-field solo v-model="usuario.phone"></v-text-field>
+                <v-text-field solo v-model="usuario.user.phone"></v-text-field>
             </v-flex>
             <v-flex xs12 md6 class="pa-3">
                 <h3>{{$t('perfil.pais')}}</h3>
-                <v-text-field solo v-model="usuario.country"></v-text-field>
+                <v-text-field solo v-model="usuario.user.country"></v-text-field>
             </v-flex>
             <v-flex xs12 md6 class="pa-3">
                 <h3>{{$t('perfil.departamento')}}</h3>
-                <v-text-field solo v-model="usuario.department"></v-text-field>
+                <v-text-field solo v-model="usuario.user.department"></v-text-field>
             </v-flex>
             <v-flex xs12 md6 class="pa-3">
                 <h3>{{$t('perfil.ciudad')}}</h3>
-                <v-text-field solo v-model="usuario.city"></v-text-field>
+                <v-text-field solo v-model="usuario.user.city"></v-text-field>
             </v-flex>
             <v-flex xs12>
                 <v-btn round block color="primary" @click="actualizarInfo">{{$t('perfil.actualizar')}}</v-btn>
@@ -53,7 +53,7 @@ export default {
     }
   },
   mounted () {
-    this.usuario = JSON.parse(JSON.stringify(this.getUsuario))
+    this.usuario = this.getUsuario
   },
   methods: {
     actualizarInfo () {
