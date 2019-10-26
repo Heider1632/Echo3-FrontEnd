@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app style="overflow:hidden">
     <animacion v-if="getIntro"/>
     <!-- SITIO WEB -->
     <template v-else>
@@ -37,7 +37,7 @@
             <router-view/>
           </v-layout>
         </v-container>
-        <v-footer fluid style="z-index: 5" height="auto">
+        <v-footer style="z-index: 1; min-height:auto!important;" height="auto">
           <v-layout column fill-height>
             <v-flex xs12 name="idiomas" hidden-sm-and-up>
               <v-layout column class="text-xs-center">
@@ -68,9 +68,9 @@
                 </v-flex>
               </v-layout>
             </v-flex>
-            <v-flex xs12 name="Principal" class="pb-2">
+            <v-flex xs12 name="Principal">
               <v-layout row wrap justify-center align-center>
-                <v-flex xs5 md2 v-for="item in principal" :key="item.alt">
+                <v-flex xs6 md2 v-for="item in principal" :key="item.alt">
                   <v-tooltip top>
                   <template v-slot:activator="{ on }">
                     <v-img
@@ -87,25 +87,6 @@
                 </v-flex>
               </v-layout>
             </v-flex>
-            <hr class="margen-linea">
-            <!-- <v-flex xs12 name="Apoyan" class="pt-2 footer">
-              <v-layout row wrap justify-center align-center>
-                <v-flex xs4 md1 v-for="item in apoyan" :key="item.alt">
-                  <v-tooltip top>
-                  <template v-slot:activator="{ on }">
-                    <v-img
-                    v-on="on"
-                    :alt="item.alt"
-                    :src="item.src"
-                    contain
-                    class="logos"
-                    />
-                  </template>
-                  <span>{{item.alt}}</span>
-                </v-tooltip>
-                </v-flex>
-              </v-layout>
-            </v-flex> -->
           </v-layout>
         </v-footer>
     </template>

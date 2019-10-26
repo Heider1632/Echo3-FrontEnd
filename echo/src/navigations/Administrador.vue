@@ -17,7 +17,7 @@
             <v-btn flat @click="salir()">Salir</v-btn>
         </v-toolbar-items>
       </v-toolbar>
-      <v-navigation-drawer right temporary absolute v-model="drawer" syle="z-index:5">
+      <v-navigation-drawer right temporary absolute v-model="drawer" style="z-index:5">
       <v-list class="pt-0 dense">
         <v-divider />
         <v-list-tile v-for="item in menu" :key="item.titulo" @click="$router.push($t('alias.'+item.titulo))">
