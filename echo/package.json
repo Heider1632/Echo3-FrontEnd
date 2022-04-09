@@ -15,7 +15,7 @@
     "axios": "^0.18.0",
     "faker": "^4.1.0",
     "jwt-decode": "^2.2.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "register-service-worker": "^1.6.2",
     "socket.io-client": "^2.2.0",
     "vue": "^2.6.10",
